@@ -1,20 +1,39 @@
 
-
-function comprar() {
-  let precio = parseInt(document.getElementById("precio").value);
+ 
+function comprar(CodPd) {
   let cantidad = parseInt(prompt("Ingrese Cantidad a comprar:"));
-  let rs = cantidad * precio;
-  alert("Total a pagar:$ " + rs);
-}
+  let rs = 0;
+  const pd = Bombon.filter((b) => {
+    let p = 0,
+      st = 0,
+      stockD = 0;
+    if (b.id === CodPd) {
+      if (cantidad > b.stock) {
+        alert(`cantidad insuficiente, el stock disponible es de:${b.stock}`);
+      } else {
+        p = b.Precio;
+        st = b.stock;
+        rs = cantidad * p;
+        stockD = st - cantidad;
 
+        alert("Total a pagar:$ " + rs);
+        alert("Gracias por su compra!");
+      }
+    }
+  });
+};
 
-function carrito() {
-let precio = document.getElementById("precio");
-  let c = 0;
-  c=c+1
-  const carrito = [];
-  for (i = 0; i <2 ; i++) {
-    const a= carrito.push(precio); 
-    document.getElementById("total_carrito").innerHTML = a;
+function categoria(){
+  let idProd=document.getElementsByClassName('impulsivos')
+  const impuls;   
+     if(idProd==='Bombones'){
+       impuls=Bombon
+     }else if(idProd==='Palitos'){
+       impuls=Palitos
+     }else if(idProd==='Postres'){
+       impuls=Postres
+     }else{
+       impuls=Bombon
+     }
+     return impuls    
   }
-}
