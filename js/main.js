@@ -1,6 +1,6 @@
 
 
-const Bombon = [
+const impulsivos = [
   {
     id: 1,
     descricpion: "Bombon Escoces",
@@ -29,8 +29,6 @@ const Bombon = [
     img: "./img/bombonvainilla.png",
     stock: 10,
   },
-];
-const Postres = [
   {
     id: 5,
     descricpion: "Cassata",
@@ -59,8 +57,6 @@ const Postres = [
     img: "./img/crocantino.png",
     stock: 20,
   },
-];
-const Palitos = [
   {
     id: 9,
     descricpion: "Palito Bombon",
@@ -90,18 +86,33 @@ const Palitos = [
     stock: 20,
   },
   {
-    id: 12,
+    id: 13,
     descricpion: "Palito Pico Dulce",
     Precio: 300,
     img: "./img/picodulce__1.png",
     stock: 20,
   },
+  {
+    id: 14,
+    descricpion: "Torta Grido",
+    Precio: 580,
+    img: "./img/torta_grido.png",
+    stock: 6,
+  },
+  {
+    id: 15,
+    descricpion: "Torta Milka",
+    Precio: 580,
+    img: "./img/torta_milka.jpg",
+    stock: 20,
+  }
 ];
+
 
 
 let c = document.getElementById("catalogo");
 
-const pdc = Palitos;
+const pdc = impulsivos;
 for (c of pdc) {
   catalogo.innerHTML += `<div class="card justify-content-evenly" style="width: 18rem;">
     <img src="./${c.img}" class="card-img-top" alt="Bombon Escoces caja">

@@ -3,7 +3,7 @@
 function comprar(CodPd) {
   let cantidad = parseInt(prompt("Ingrese Cantidad a comprar:"));
   let rs = 0;
-  const pd = Palitos.filter((b) => {
+  const pd = impulsivos.filter((b) => {
     let p = 0,
       st = 0,
       stockD = 0;
