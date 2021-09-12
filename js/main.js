@@ -140,10 +140,25 @@ const impulsivos = [
     stock: 5,
   },
 ];
-
 let c = document.getElementById("catalogo");
 const pdc = impulsivos;
+let count = 0;
 
+let lb = document.getElementById("lbl");
+
+function sumar() {
+  if (count < 10) {
+    count++;
+    lbl.innerHTML = count;
+    console.log(count);
+  }
+}
+function restar() {
+  if (count > 1) {
+    count--;
+    lb.innerHTML = count;
+  }
+}
 for (const p of pdc) {
   c.innerHTML += `<div class="card" style="width: 14rem;">
     <img src="./${p.img}" class="card-img-top" alt="Bombon Escoces caja">
@@ -153,9 +168,13 @@ for (const p of pdc) {
       <p class="card-text" hidden=true >Descripcion ${p.descricpion}</p>
       <p class="card-text" id="precio">Precio $${p.Precio}</p>
       <p class="card-text">Stock Disponible: <span id="stock">${p.stock}</span></p>
-      <div>        
-        <input type=number id="cantidad" style="width:3em" min="1">        
-        <a href="#" class="btn btn-primary"id="comprar" onclick="comprar(${p.id})">Agregar</a>
+      <div>
+        <div>
+            <button type="button" class="btn btn-primary" onclick="restar()" >-</button>
+            <label id="lbl">${count}</label>
+            <button type="button" class="btn btn-primary" onclick="sumar()">+</button>
+            <a href="#" class="btn btn-primary"id="comprar" onclick="comprar(${p.id}),${count}">Agregar</a>
+      </div>        
       </div>  
     </div>
   </div>`;

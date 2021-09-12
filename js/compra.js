@@ -3,7 +3,7 @@ let contador = 0;
 let total = 0;
 
 function comprar(CodPd) {
-  let cantidad = parseInt(prompt("Ingrese Cantidad a comprar:"));
+  cantidad = count;
   if (isNaN(cantidad) || cantidad <= 0) {
     alert("Debe ingresar un número mayor que cero");
   } else {
@@ -26,9 +26,9 @@ function comprar(CodPd) {
           contador += cantidad;
           total += rs;
           let cart = document.getElementById("carrito_cantidad");
-         // let monto = document.getElementById("montoTotal");
+          // let monto = document.getElementById("montoTotal");
           cart.innerHTML = `${contador}`;
-         // monto.innerHTML = `${total}`;
+          // monto.innerHTML = `${total}`;
           //alert("Total a pagar:$ " + rs);
           return carrito;
         }
