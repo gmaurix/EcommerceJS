@@ -140,23 +140,5 @@ const impulsivos = [
     stock: 5,
   },
 ];
+export default impulsivos;
 
-let c = document.getElementById("catalogo");
-const pdc = impulsivos;
-
-for (const p of pdc) {
-  c.innerHTML += `<div class="card" style="width: 14rem;">
-    <img src="./${p.img}" class="card-img-top" alt="Bombon Escoces caja">
-    <div class="card-body">
-      <h5 class="card-title"><strong> ${p.descricpion}</strong></h5>
-      <p class="card-text" id="CodPd" hidden=true>Codigo Producto: ${p.id}</p>
-      <p class="card-text" hidden=true >Descripcion ${p.descricpion}</p>
-      <p class="card-text" id="precio">Precio $${p.Precio}</p>
-      <p class="card-text">Stock Disponible: <span id="stock">${p.stock}</span></p>
-      <div>        
-        <input type=number id="cantidad" style="width:3em" min="1">        
-        <a href="#" class="btn btn-primary"id="comprar" onclick="comprar(${p.id})">Agregar</a>
-      </div>  
-    </div>
-  </div>`;
-}

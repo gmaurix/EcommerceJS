@@ -1,11 +1,11 @@
 const carrito = [];
 let contador = 0;
+let total = 0;
 
 function comprar(CodPd) {
   let cantidad = parseInt(prompt("Ingrese Cantidad a comprar:"));
-  if (isNaN(cantidad)) {
-    alert("Debe ingresar un número");
-    //comprar();
+  if (isNaN(cantidad) || cantidad <= 0) {
+    alert("Debe ingresar un número mayor que cero");
   } else {
     let rs = 0;
     const add = [];
@@ -15,7 +15,7 @@ function comprar(CodPd) {
         stockD = 0;
       if (b.id === CodPd) {
         if (cantidad > b.stock) {
-          alert(`cantidad insuficiente, el stock disponible es de:${b.stock}`);
+          alert(`Cantidad insuficiente, el stock disponible es de: ${b.stock}`);
         } else {
           p = b.Precio;
           st = b.stock;
@@ -24,28 +24,24 @@ function comprar(CodPd) {
           add.push(b.descricpion, cantidad, b.Precio, rs);
           carrito.push(add);
           contador += cantidad;
-          let cart = document.getElementById("carrito_cantidad");          
+          total += rs;
+          let cart = document.getElementById("carrito_cantidad");
+         // let monto = document.getElementById("montoTotal");
           cart.innerHTML = `${contador}`;
-          alert("Total a pagar:$ " + rs);
-          //alert("Gracias por su compra!");
+         // monto.innerHTML = `${total}`;
+          //alert("Total a pagar:$ " + rs);
           return carrito;
         }
       }
     });
   }
 }
-/* 
-function addCarrito() {
-  const cars = [];
-  //const filtrado = agregado.filter((b) => b.id !== b.id);
-  cars.push(carrito); 
-  //for (const x of cars) {
- 
-  //}
-}
- */
+
 function finCompra() {
   alert(carrito);
-  let total = carrito.rs;
-  console.log(carrito);
+  const jsonCarro = JSON.stringify(carrito);
+  localStorage.setItem("jsCarrito", jsonCarro);
+  const pdLS = localStorage.getItem("jsCarrito");
+  const pds = JSON.parse(pdLS);
+  console.log(pds);
 }
