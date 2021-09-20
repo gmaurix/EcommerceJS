@@ -1,103 +1,107 @@
-:root{
+:root {
   scroll-behavior: smooth;
 }
-
 body{
   box-sizing: border-box;
   margin: 0 auto;
   background: #f5f5f5;
-}
-  /* 
-  .container {
-    
-      display: grid;
-      justify-content: center;
-      align-items: center;
-      grid-template-areas:
-        "header header header"
-        "nav nav nav"
-        "inicio inicio inicio"
-        "catalogo catalogo catalogo"
-        "footer footer footer";
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(3, 1fr);
-      gap:10px;
-    
-    } */
+ }
 
-
-.encabezado {
-  height: 0;
+ /* ----------------- estilos del contenedor y template grid ----------------- */
+.container {
   width: 100vw;
-  margin:0 auto;
-  background-color: white;
-  text-align: center;
-  align-items: center;
+  height: 100%;
+  display: grid;
   justify-content: center;
+  align-items: center;
+  grid-template-areas:
+    "nav nav nav"
+    "importe importe importe"
+    "catalogo catalogo catalogo"
+    "footer footer footer";
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: repeat(3, auto);
+  
 }
-
-.navbar{
-  z-index: 10;
-  width: 80vw;
-  top: 0;
-  margin-left: 2em;
+/* --------------------------- estilos para el nav -------------------------- */
+nav {
+  grid-area: nav;
+  height: 7em;
+  width: auto;
   box-shadow: 0px 5px 10px rgb(202, 200, 200);
   display: flex;
-  align-items: center;
-  justify-content: center;
-   
+  flex-direction: row;
+  top: auto;  
 }
-.nav-link{
+.nav-link {
   margin-left: 1em;
-  align-items: flex-start;
+  align-items: center;
   text-align: left;
 }
-.nav-link:hover{
+.nav-link:hover {
   color: #9e0909 !important;
+}
+/* ------------------------- estilos para el importe ------------------------ */
+.importe{
+  grid-area: importe;
+  position: relative;
+  height: 2em;
+  margin-top: 1em;
+  width: auto;
+}
+ /* ------------- el catalogo que contiene las cards y los filtro ------------ */
+.catalogo {
+  grid-area: catalogo;
+  width: auto;
+  height: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: space-around;
   
-} 
-
-#productos{
-  position:fixed;
-  background-color: burlywood;
-
 }
-#productos ul {
-  text-decoration: none;
+/* ----------------- estilos para la columna de los filtros ----------------- */
+.filtros {
+  width: 15%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 1em;
+  
 }
-.productos-item {
-  list-style-type: none;
-  display:inline-block;
-} 
-
+/* ----------------- estilos para el div q contiene las card ---------------- */
 #catalogo {
   display: flex;
   justify-content: space-evenly;
-  width: auto;  
-  flex-wrap: wrap; 
-  margin-top: 10em;
+  flex-wrap: wrap;
+  width: 90%;
+  height: 80em;
+  gap: 2em;
+  overflow-y: auto;
 }
-
-
-.carrito{
-  margin-left: 2em;
+/* ------------------ estilos para el carrito de la navbar ------------------ */
+.carrito {
+  margin-left: 1em;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: end;
   font-size: 1.2em;
-  font-weight: bold;
+
   position: relative;
   margin-bottom: 1em;
-  
 }
-#carrito{  
+#carrito {
   display: flex;
   flex-direction: row;
   justify-content: end;
-  
 }
-#carrito_cantidad{
+#mensaje{
+  font-weight: bold;
+}
+/* --------- estilo para la etiqueta cantidad del carrito en navbar --------- */
+#carrito_cantidad {
   background-color: rgb(36, 88, 230);
   color: white;
   width: 1.5em;
@@ -106,40 +110,29 @@ body{
   border-radius: 50%;
   margin-right: 1em;
   margin-bottom: 2em;
+  
 }
+/* --------------------- estilo q se aplica a cada card --------------------- */
 .card {
-  flex-direction: row;  
+  width: auto;
+  height: 25em;
+  flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  width: auto;
-  height: auto;
   margin-bottom: 1em;
-  align-content: space-around;
+  align-content: space-between;
   background: #f5f5f5;
   box-shadow: 10px 10px 10px #d0d0d0;
-}/* 
-.card-img-top{
-  width: 8em;
-  height: auto;
-
-} */
-.addCarrito{
+}
+.addCarrito {
   margin-top: 2em;
   width: auto;
 }
 
-.montoTotal{
-  display: flex;
-  justify-content: center;
-  flex-wrap: nowrap;
-  width: 100vw;  
-  height: 20em;
-  overflow: hidden;
-  top: -20em;
-}
-
-.footer{
-  height: 5em;
-  width:  100%;
+/* ---------------------------- estilo del footer --------------------------- */
+.footer {
+  grid-area: footer;
+  height: 10em;
+  width: 100%;
   background-color: burlywood;
 }
