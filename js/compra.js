@@ -4,7 +4,7 @@ let total = 0;
 
 function comprar(CodPd) {
   let msj = $("#mensaje"); //JQuery
-  cantidad = count;
+  cantidad = contar;
   if (isNaN(cantidad) || cantidad <= 0) {
     /* ------------------ Jquery para mostrar en el DOM mensajes ----------------- */
     msj
@@ -15,7 +15,7 @@ function comprar(CodPd) {
   } else {
     let rs = 0;
     const add = [];
-    const pd = impulsivos.filter((b) => {
+    const pd = productos.filter((b) => {
       let p = 0,
         st = 0,
         stockD = 0;
@@ -29,25 +29,34 @@ function comprar(CodPd) {
             )
             .fadeIn("slow");
         } else {
-          p = b.Precio;
+          let id = CodPd;
+          p = b.precio;
           st = b.stock;
           d = b.descripcion;
           rs = cantidad * p;
-          stockD = st - cantidad;
-          add.push(d, cantidad, b.Precio, rs);
+          stockD -= cantidad;
+          add.push({
+            id: id,
+            descripcion: d,
+            cantidad: cantidad,
+            precio: p,
+            subtotal: rs,
+          });
           carrito.push(add);
-          contador = cantidad;
-          cantidad = 0;
+          carrito.reduce((p) => p.id === id);
+          console.log(...carrito);
+          contador += cantidad;
           total += rs;
           /* ------------------ Jquery para manipular el DOM ----------------- */
           let cart = $("#carrito_cantidad");
           let monto = $(".importe");
-
           monto.css({ color: "#139713", "font-weight": "bold" });
           monto.fadeIn(900).text(`Importe Total: $${total}`).fadeOut(8500);
-
           cart.text(`${contador}`);
-
+          /* ----------------------------------- -- ----------------------------------- */
+          cantidad = 0;
+          /* ---------------------------------- ----- --------------------------------- */
+          saveCart();
           return carrito;
         }
       }
@@ -55,10 +64,15 @@ function comprar(CodPd) {
   }
 }
 
-function finCompra() {
+function saveCart() {
   const jsonCarro = JSON.stringify(carrito);
   localStorage.setItem("jsCarrito", jsonCarro);
-  const pdLS = localStorage.getItem("jsCarrito");
-  const pds = JSON.parse(pdLS);
-  console.log(pds);
+
+  console.log(jsonCarro);
+}
+
+function showCart() {
+  const getCart = localStorage.getItem("jsCarrito");
+  const cartItems = JSON.parse(getCart);
+  console.log(cartItems);
 }

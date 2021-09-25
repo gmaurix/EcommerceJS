@@ -3,35 +3,41 @@
 }
 body{
   box-sizing: border-box;
-  margin: 0 auto;
-  background: #f5f5f5;
+  /* margin: 0 auto;
+  background: #f5f5f5; */
  }
 
  /* ----------------- estilos del contenedor y template grid ----------------- */
-.container {
-  width: 100vw;
+.container{
+  width: 100%;
   height: 100%;
+
+}
+ .container {
   display: grid;
   justify-content: center;
   align-items: center;
+
   grid-template-areas:
-    "nav nav nav"
     "importe importe importe"
     "catalogo catalogo catalogo"
     "footer footer footer";
+  
   grid-template-columns: repeat(3, auto);
   grid-template-rows: repeat(3, auto);
   
 }
 /* --------------------------- estilos para el nav -------------------------- */
 nav {
-  grid-area: nav;
-  height: 7em;
-  width: auto;
+  height: 10em;
+  width: 100%;
   box-shadow: 0px 5px 10px rgb(202, 200, 200);
   display: flex;
   flex-direction: row;
+  justify-content: center;
   top: auto;  
+  
+  
 }
 .nav-link {
   margin-left: 1em;
@@ -41,28 +47,37 @@ nav {
 .nav-link:hover {
   color: #9e0909 !important;
 }
+
+
 /* ------------------------- estilos para el importe ------------------------ */
 .importe{
   grid-area: importe;
   position: relative;
   height: 2em;
   margin-top: 1em;
+  margin-top: 2em;
   width: auto;
+  font-weight: bold;
+  text-align: center;
+
+  
+  
 }
  /* ------------- el catalogo que contiene las cards y los filtro ------------ */
 .catalogo {
   grid-area: catalogo;
-  width: auto;
+  width: 90vw;
   height: 100%;
   display: flex;
   flex-wrap: nowrap;
   flex-direction: row;
   justify-content: space-around;
-  
+  margin-top: 5em;
+  margin-bottom: 3em;
 }
 /* ----------------- estilos para la columna de los filtros ----------------- */
 .filtros {
-  width: 15%;
+  width: 10%;
   height: auto;
   display: flex;
   flex-wrap: wrap;
@@ -75,12 +90,21 @@ nav {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  width: 90%;
+  width: 100%;
   height: 80em;
   gap: 2em;
   overflow-y: auto;
 }
 /* ------------------ estilos para el carrito de la navbar ------------------ */
+.cart-nav{
+  display: flex;
+  flex-direction: row;
+  width: 20em;
+  justify-content: end;
+  /* background-color: cadetblue; */
+  margin-left: 45%;  
+
+}
 .carrito {
   margin-left: 1em;
   display: flex;
@@ -88,7 +112,6 @@ nav {
   flex-wrap: wrap;
   justify-content: end;
   font-size: 1.2em;
-
   position: relative;
   margin-bottom: 1em;
 }
@@ -96,9 +119,6 @@ nav {
   display: flex;
   flex-direction: row;
   justify-content: end;
-}
-#mensaje{
-  font-weight: bold;
 }
 /* --------- estilo para la etiqueta cantidad del carrito en navbar --------- */
 #carrito_cantidad {
@@ -115,7 +135,7 @@ nav {
 /* --------------------- estilo q se aplica a cada card --------------------- */
 .card {
   width: auto;
-  height: 25em;
+  height: 28em;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -129,10 +149,36 @@ nav {
   width: auto;
 }
 
+.finCompras {    
+    transform: translateX(5);
+    position: fixed;
+    top: 9em;
+    right: 0;
+    height:auto;
+    transition: all .5s ease-in-out;
+    background-color: #ffffff;
+    max-width: 25rem;
+    min-width: 25rem;
+    overflow-y:auto;    
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+}
+.finCompras li{
+  margin-left: 2em;
+  list-style-type: symbols('-');
+}
+.finCompras span{
+  margin-left: 2em;
+}
+
+
 /* ---------------------------- estilo del footer --------------------------- */
 .footer {
   grid-area: footer;
   height: 10em;
   width: 100%;
-  background-color: burlywood;
+  color: white;
+  background-color: rgb(31, 32, 133);
+}
+address{
+  margin: 3em;
 }
