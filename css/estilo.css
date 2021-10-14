@@ -11,7 +11,6 @@ body{
 .container{
   width: 100%;
   height: 100%;
-
 }
  .container {
   display: grid;
@@ -36,6 +35,7 @@ nav {
   flex-direction: row;
   justify-content: center;
   top: auto;  
+  z-index: -2000px;
   
   
 }
@@ -60,14 +60,13 @@ nav {
   font-weight: bold;
   text-align: center;
 
-  
-  
+ 
 }
  /* ------------- el catalogo que contiene las cards y los filtro ------------ */
 .catalogo {
   grid-area: catalogo;
   width: 90vw;
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-wrap: nowrap;
   flex-direction: row;
@@ -91,9 +90,9 @@ nav {
   justify-content: space-evenly;
   flex-wrap: wrap;
   width: 100%;
-  height: 80em;
+  height: 100%;
   gap: 2em;
-  overflow-y: auto;
+  /* overflow-y: auto; */
 }
 /* ------------------ estilos para el carrito de la navbar ------------------ */
 .cart-nav{
@@ -157,18 +156,20 @@ nav {
     height:auto;
     transition: all .5s ease-in-out;
     background-color: #ffffff;
-    max-width: 25rem;
-    min-width: 25rem;
+    width: 2em;
+    width: 5em;
     overflow-y:auto;    
     box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
 }
 .finCompras li{
   margin-left: 2em;
   list-style-type: symbols('-');
+  width: auto;
 }
 .finCompras span{
   margin-left: 2em;
 }
+
 
 
 /* ---------------------------- estilo del footer --------------------------- */

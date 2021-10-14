@@ -6,9 +6,9 @@ let productos = [];
 
 /* ------ boton para realizar llamada Ajax y que devuelva los productos ----- */
 $(".filtros").prepend(
-  `<button  type="button" id="ajax" class="btn btn-success" >Listar Catalogo</button>`
+  `<button  type="button" id="ajax" class="btn btn-success" >Ver Catalogo</button>`
 );
-/* ------------------------ EVENTO onclick DEL BOTON ------------------------ */
+/* ------------------------ EVENTO onclick DEL BOTON Ver Catalogo------------------------ */
 $("#ajax").click(() => {
   $.getJSON(impulsivos, function (resp, estado) {
     if (estado === "success") {
@@ -31,9 +31,8 @@ $("#ajax").click(() => {
             <label class="lbl" id="lbl${p.id}">0</label>
             <button type="button" class="b-suma btn btn-primary"
             id="btn-sumar${p.id}">+</button>
-            <a href="#" class="btn btn-primary " id="comprar" onclick="comprar(${
-              p.id
-            }),${"contar"}">Agregar</a>
+            <a href="#" class="btn btn-primary btn_agregar" data-id =${p.id} 
+            id="comprar" onclick="comprar(${p.id}),${"contar"}">Agregar</a>
         </div>        
       </div>  
     </div>
@@ -43,10 +42,10 @@ $("#ajax").click(() => {
         $(`#btn-sumar${p.id}`).on("click", (e) => {
           let ids = document.querySelector(`#lbl${p.id}`);
           contar = parseInt(ids.innerHTML) + 1;
-          if (contar > 0) {
+          if (contar >= 0) {
             ids.innerHTML = contar;
           } else {
-            ids.innerHTML = 1;
+            ids.innerHTML = 0;
           }
         });
 
@@ -56,14 +55,72 @@ $("#ajax").click(() => {
             contar--;
             ids.text(contar);
           } else {
-            contar = 1;
+            contar = 0;
           }
         });
         /* --------------------------------- ------ --------------------------------- */
-        
       }
     }
   });
 });
 
+function finCompra() {
+  const jsonCarro = JSON.stringify(carrito);
+  localStorage.setItem("jsCarrito", jsonCarro);
+  const pdLS = localStorage.getItem("jsCarrito");
+  const pds = JSON.parse(pdLS);
 
+  $(".container")
+    .append(` <div class="d-flex justify-content-around row finCompras"
+    style="width:50em; height:auto; overflow:scroll-y;"  >
+    <br>
+   <br>
+    <span class="fw-bolder mt-3">Detalle del Pedido</span>
+    <div class="checking d-flex row p-0 w-auto">          
+      </div>
+      <hr>
+      <p><span id="importeTotal" class="fw-bolder"></span> <button class="btn btn-primary">Pagar</button></p>
+    </div>
+    `);
+
+  for (const xc of pds) {
+    $(".checking").prepend(
+      `
+ <table class="table">     
+ <thead class="table-dark">
+ <tr>
+   <th scope="col">#</th>
+   <th scope="col">Producto</th>
+   <th scope="col">Precio Unitario</th>
+   <th scope="col">Cantidad</th>
+   <th scope="col">Subtotal</th>
+   <th scope="col">Acciones</th>
+ </tr>
+</thead>
+<tbody>
+  <tr">
+    <th scope="row">
+    <img src="../${xc.foto}" style="width:2em; height:2em;" loading="lazy" alt="${xc.descripcion}">
+    </th>
+    <td>${xc.descripcion}</td>
+    <td>$${xc.precio}</td>
+    <td>${xc.cantidad}</td>
+    <td>${xc.subtotal}</td>
+    <td>
+    <button class="btn btn-danger quitarProducto" onclick="quitar(${xc.id})" >x</button>
+    </td>
+  </tr>
+</tbody>
+</table> `
+    );
+    $("#importeTotal").text(`Total: $${total}      `);
+  }
+}
+
+function quitar(id) {
+  const pds = localStorage.getItem("jsCarrito");
+  const pp = JSON.parse(pds);
+  const pd = pp.filter((p) => p.id !== id);
+  localStorage.setItem("cart", pd);
+  comprar();
+}

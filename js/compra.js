@@ -1,11 +1,13 @@
-const carrito = [];
+let carrito = [];
 let contador = 0;
 let total = 0;
 
 function comprar(CodPd) {
+  $(".finCompras").hide();
+
   let msj = $("#mensaje"); //JQuery
-  cantidad = contar;
-  if (isNaN(cantidad) || cantidad <= 0) {
+
+  if (isNaN(contar) || contar <= 0) {
     /* ------------------ Jquery para mostrar en el DOM mensajes ----------------- */
     msj
       .css({ color: "#9e0909" })
@@ -13,14 +15,15 @@ function comprar(CodPd) {
       .text("Debe ingresar un número mayor que cero")
       .fadeOut(5500);
   } else {
-    let rs = 0;
-    const add = [];
+    let _subTotal = 0;
+    const addCart = [];
     const pd = productos.filter((b) => {
-      let p = 0,
-        st = 0,
-        stockD = 0;
+      let _price = 0,
+        _stock = 0,
+        _foto = "",
+        _cantidad = 0;
       if (b.id === CodPd) {
-        if (cantidad > b.stock) {
+        if (contar > b.stock || contar == 0) {
           /* ------------------ Jquery para mostrar en el DOM mensajes ----------------- */
           msj
             .css({ color: "#9e0909" })
@@ -29,24 +32,33 @@ function comprar(CodPd) {
             )
             .fadeIn("slow");
         } else {
-          let id = CodPd;
-          p = b.precio;
-          st = b.stock;
-          d = b.descripcion;
-          rs = cantidad * p;
-          stockD -= cantidad;
-          add.push({
-            id: id,
-            descripcion: d,
-            cantidad: cantidad,
-            precio: p,
-            subtotal: rs,
+          let idPd = CodPd;
+          _price = b.precio;
+          _stock = b.stock;
+          _descrip = b.descripcion;
+          _foto = b.img;
+          _subTotal = contar * _price;
+          _cantidad = contar;
+
+          carrito.push({
+            id: idPd,
+            descripcion: _descrip,
+            foto: _foto,
+            cantidad: _cantidad,
+            precio: _price,
+            subtotal: _subTotal,
           });
-          carrito.push(add);
-          carrito.reduce((p) => p.id === id);
-          console.log(...carrito);
-          contador += cantidad;
-          total += rs;
+          _cantidad = 0;
+
+          let anterior = [...carrito];
+          if (anterior.some((p) => p.id === idPd)) {
+            anterior.find((p) => p.id === idPd).cantidad += _cantidad;
+          } else {
+            anterior = [...new Set(carrito)];
+            carrito.push(([...carrito].cantidad += contar));
+          }
+          contador += contar;
+          total += _subTotal;
           /* ------------------ Jquery para manipular el DOM ----------------- */
           let cart = $("#carrito_cantidad");
           let monto = $(".importe");
@@ -54,7 +66,7 @@ function comprar(CodPd) {
           monto.fadeIn(900).text(`Importe Total: $${total}`).fadeOut(8500);
           cart.text(`${contador}`);
           /* ----------------------------------- -- ----------------------------------- */
-          cantidad = 0;
+          contar = 0;
           /* ---------------------------------- ----- --------------------------------- */
           saveCart();
           return carrito;
@@ -67,12 +79,10 @@ function comprar(CodPd) {
 function saveCart() {
   const jsonCarro = JSON.stringify(carrito);
   localStorage.setItem("jsCarrito", jsonCarro);
-
-  console.log(jsonCarro);
 }
 
 function showCart() {
   const getCart = localStorage.getItem("jsCarrito");
   const cartItems = JSON.parse(getCart);
-  console.log(cartItems);
+  finCompra();
 }

@@ -102,6 +102,96 @@
     "precio":570,
     "img": "./img/familiar01.png",
     "stock": 20
+  },
+  {
+    "id": 14,
+    "descripcion": "Familiar N2",
+    "categoria":"Familiar",
+    "precio":570,
+    "img": "./img/familiar02.png",
+    "stock": 20
+  },
+  {
+    "id": 15,
+    "descripcion": "Familiar N3",
+    "categoria":"Familiar",
+    "precio":570,
+    "img": "./img/familiar03.png",
+    "stock": 20
+  },
+  {
+    "id": 16,
+    "descripcion": "Familiar N4",
+    "categoria":"Familiar",
+    "precio":570,
+    "img": "./img/familiar04.png",
+    "stock": 20
+  },
+  {
+    "id": 17,
+    "descripcion": "Torta Oreo",
+    "categoria":"Tortas",
+    "precio":520,
+    "img": "./img/torta_oreo.png",
+    "stock": 15
+  },
+  {
+    "id": 18,
+    "descripcion": "Torta Grido",
+    "categoria":"Tortas",
+    "precio":520,
+    "img": "./img/torta_grido.png",
+    "stock": 5
+  },
+  {
+    "id": 18,
+    "descripcion": "Torta Milka",
+    "categoria":"Tortas",
+    "precio":520,
+    "img": "./img/torta_milka.jpg",
+    "stock": 8
+  },
+  {
+    "id": 19,
+    "descripcion": "Palito Pico Dulce",
+    "categoria":"Palitos",
+    "precio":330,
+    "img": "./img/picodulce__1.png",
+    "stock": 5
+  },
+  {
+    "id": 20,
+    "descripcion": "Tentación Frutilla",
+    "categoria":"Tentaciones",
+    "precio":270,
+    "img": "./img/tentacion_frutilla.png",
+    "stock": 11
+  },
+  {
+    "id": 21,
+    "descripcion": "Tentación Mascarpone",
+    "categoria":"Tentaciones",
+    "precio":270,
+    "img": "./img/tentacion_mascarpone.png",
+    "stock": 11
+  },
+  {
+    "id": 22,
+    "descripcion": "Tentación Granizado",
+    "categoria":"Tentaciones",
+    "precio":270,
+    "img": "./img/tentaciongranizado.png",
+    "stock": 11
+  },
+  {
+    "id": 23,
+    "descripcion": "Tentación Limón",
+    "categoria":"Tentaciones",
+    "precio":270,
+    "img": "./img/tentacionlimon.png",
+    "stock": 11
   }
+
+
 
 ]
