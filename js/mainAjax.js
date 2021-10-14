@@ -72,10 +72,11 @@ function finCompra() {
 
   $(".container")
     .append(` <div class="d-flex justify-content-around row finCompras"
-    style="width:50em; height:auto; overflow:scroll-y;"  >
+    style="width:50em; height:auto; overflow:scroll-y; padding-top:3em;"  >
     <br>
    <br>
-    <span class="fw-bolder mt-3">Detalle del Pedido</span>
+   <br>
+    <span class="fw-bolder mt-3">DETALLE DEL PEDIDO</span>
     <div class="checking d-flex row p-0 w-auto">          
       </div>
       <hr>
@@ -86,32 +87,15 @@ function finCompra() {
   for (const xc of pds) {
     $(".checking").prepend(
       `
- <table class="table">     
- <thead class="table-dark">
- <tr>
-   <th scope="col">#</th>
-   <th scope="col">Producto</th>
-   <th scope="col">Precio Unitario</th>
-   <th scope="col">Cantidad</th>
-   <th scope="col">Subtotal</th>
-   <th scope="col">Acciones</th>
- </tr>
-</thead>
-<tbody>
-  <tr">
-    <th scope="row">
-    <img src="../${xc.foto}" style="width:2em; height:2em;" loading="lazy" alt="${xc.descripcion}">
-    </th>
-    <td>${xc.descripcion}</td>
-    <td>$${xc.precio}</td>
-    <td>${xc.cantidad}</td>
-    <td>${xc.subtotal}</td>
-    <td>
-    <button class="btn btn-danger quitarProducto" onclick="quitar(${xc.id})" >x</button>
-    </td>
-  </tr>
-</tbody>
-</table> `
+<ul>
+<li>
+<img src="../${xc.foto}" style="width:2em; height:2em;" loading="lazy" alt="${xc.descripcion}">
+<strong>Producto:</strong> ${xc.descripcion} <strong> Precio Unitario:</strong> $${xc.precio} <strong> Cantidad: </strong>${xc.cantidad} <strong> Subtotal:</strong> $${xc.subtotal}
+</li>
+</ul>
+
+
+`
     );
     $("#importeTotal").text(`Total: $${total}      `);
   }
